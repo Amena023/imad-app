@@ -9,7 +9,7 @@ var articleOne  = {
     title: 'Article-One AMENA ARIF',
     heading: 'Article-One',
     date:'Aug 13 2017',
-    content:`<p>
+    content:`<p>  FIRST Article 
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
@@ -28,9 +28,36 @@ var articleOne  = {
                 </p>
             `
 };
+    articleTwo: { 
+    title: 'Article-Two AMENA ARIF',
+    heading: 'Article-Two',
+    date:'Aug 13 2017',
+    content:`<p>   Second Article
+                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
+                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
+                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
+                </p>
+            `
+    },
+    articleThree: {
+        
+    title: 'Article-Three AMENA ARIF',
+    heading: 'Article-Three',
+    date:'Aug 13 2017',
+    content:`<p>   Third Article
+                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
+                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
+                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
+                </p>
+            `
+    
+    
+    };
+                
+
 function CreateTemplate(data) {
     var title=data.title;
-     var date=data.date;
+    var date=data.date;
     var heading=data.heading;
     var content=data.content;
    
