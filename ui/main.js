@@ -32,7 +32,7 @@ var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     // make a re to server and send the name
     //capture a list of names and render them as alist
-    var name = ['name1','name2','name3'];
+    var name = ['name1','name2','name3','name4'];
     var list = '';
     for(var i=0 ; i<names.length ; i++) {
         list = '<li>' + name[i] + '</li>';
