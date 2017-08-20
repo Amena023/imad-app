@@ -112,14 +112,6 @@ app.get('/counter', function (req,res) {
     res.send(counter.toString());
 });
 
-
-app.get('/:articleName', function (req,res){
-    //articleName==article-one
-    //articles[articleName]=={} content object for article-one
-        var articleName=req.params.articleName;
-    res.send(CreateTemplate(articles[articleName]));
-});
-
 var names = [];
 app.get('/submit-name/:name', function(req,res) {
    var name = req.query.name;
@@ -128,6 +120,15 @@ app.get('/submit-name/:name', function(req,res) {
    res.send(JSON.stringify(names));
    
 });
+
+app.get('/:articleName', function (req,res){
+    //articleName==article-one
+    //articles[articleName]=={} content object for article-one
+        var articleName=req.params.articleName;
+    res.send(CreateTemplate(articles[articleName]));
+});
+
+
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
