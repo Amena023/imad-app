@@ -94,7 +94,7 @@ function CreateTemplate(data) {
         <p>Post your comment below:</p>
             <form method="post">
                <input type="text" name="comment" />
-               <input type="submit" value="Post" id="submit-btn"/>
+               <input type="submit" value="Post" id="post-btn"/>
             </form>
         </div>
         
