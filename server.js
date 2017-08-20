@@ -124,6 +124,13 @@ app.get('/counter', function (req,res) {
     res.send(counter.toString());
 });
 
+var comments =[];
+app.get('/postComment',function (req,res) {
+var comment =re.query.comment;
+comments.push(comment);
+res.send(JSON.stringify(comments));
+});
+
 var names = [];
 app.get('/submit-name', function(req,res) {
    var name = req.query.name;
@@ -140,12 +147,7 @@ app.get('/:articleName', function (req,res){
         var articleName=req.params.articleName;
     res.send(CreateTemplate(articles[articleName]));
 });
-var comments =[];
-app.get('/postComment',function (req,res) {
-var comment =re.query.comment;
-comments.push(comment);
-res.send(JSON.stringify(comments));
-});
+
 
 
 app.get('/ui/style.css', function (req, res) {
