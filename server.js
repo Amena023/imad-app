@@ -124,12 +124,7 @@ app.get('/counter', function (req,res) {
     res.send(counter.toString());
 });
 
-var comments =[];
-app.get('/post-comment',function (req,res) {
-var comment =re.query.comment;
-comments.push(comment);
-res.send(JSON.stringify(comments));
-});
+
 
 var names = [];
 app.get('/submit-name', function(req,res) {
@@ -138,6 +133,13 @@ app.get('/submit-name', function(req,res) {
    //json :js obj notation 
    res.send(JSON.stringify(names));
    
+});
+
+var comments =[];
+app.get('/post-comment',function (req,res) {
+var comment =re.query.comment;
+comments.push(comment);
+res.send(JSON.stringify(comments));
 });
 
 
