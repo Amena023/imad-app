@@ -73,12 +73,12 @@ post.onclick = function() {
             // capture a list of names and render it as a list
             var comment = request.responseText;
             comments = JSON.parse(comments);    
-            var list ='';
+            var lst ='';
             for (var i=0; i<comments.length; i++) {
-                list += '<li>'+ comments[i] + '</li>';
+                lst += '<li>'+ comments[i] + '</li>';
 }
         var ul = document.getElementById('commentlist');
-        ul.innerHTML = list;  
+        ul.innerHTML = lst;  
         }     
     }//not DONE yet
 };
@@ -88,3 +88,4 @@ var comment = commentInput.value;
     request.open('GET','http://amenaarif1996.imad.hasura-app.io/post-comment?comment='+comment,true);
     request.send(null);
     
+};
