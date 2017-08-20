@@ -73,12 +73,12 @@ post.onclick = function() {
             // capture a list of names and render it as a list
             var comment = request.responseText;
             comments = JSON.parse(comments);    
-            var lst ='';
+            var list ='';
             for (var i=0; i<comments.length; i++) {
-                lst += '<li>'+ comments[i] + '</li>';
+                list += '<li>'+ comments[i] + '</li>';
 }
         var ul = document.getElementById('commentlist');
-        ul.innerHTML = lst;  
+        ul.innerHTML = list;  
         }     
     }//not DONE yet
 };
