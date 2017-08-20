@@ -125,7 +125,7 @@ app.get('/counter', function (req,res) {
 });
 
 var comments =[];
-app.get('/postComment',function (req,res) {
+app.get('/post-comment',function (req,res) {
 var comment =re.query.comment;
 comments.push(comment);
 res.send(JSON.stringify(comments));
