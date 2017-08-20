@@ -27,7 +27,7 @@ var articles={
                 <p>
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                 </p>
- comment :<p> </p>`           `
+            `
 },
     'article-two': { 
     title: 'Article-Two |AMENA ARIF',
@@ -38,7 +38,7 @@ var articles={
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                 </p>
-    comment :<p> </p>`
+    
             `
     },  
     'article-three': {
@@ -51,7 +51,7 @@ var articles={
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                 </p>
-     comment :<p> </p>`
+     
     
     
     }
