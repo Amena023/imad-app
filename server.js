@@ -74,7 +74,7 @@ function CreateTemplate(data) {
     </head>
     
     <body>
-    <hr/>
+    
     <div class="container">
             <div>
                 <a href="/">Home</a>
@@ -89,6 +89,7 @@ function CreateTemplate(data) {
             ${content}
         </div>
         <hr/>
+        <br>
         <div>
         <p>Post your comment below:</p>
             <form method="post">
