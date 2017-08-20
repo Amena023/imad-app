@@ -87,6 +87,13 @@ function CreateTemplate(data) {
         <div>
             ${content}
         </div>
+        <div>
+        <p>Post your comment below:</p>
+            <form method="post">
+               <input type="text" name="comment" />
+            </form>
+        </div>
+            
     </div>
     </body>
 </html>
