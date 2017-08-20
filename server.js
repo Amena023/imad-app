@@ -137,7 +137,7 @@ app.get('/submit-name', function(req,res) {
 
 var comments =[];
 app.get('/post-comment',function (req,res) {
-var comment =re.query.comment;
+var comment =req.query.comment;
 comments.push(comment);
 res.send(JSON.stringify(comments));
 });
