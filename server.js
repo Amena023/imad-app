@@ -27,7 +27,7 @@ var articles={
                 <p>
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                 </p>
-            `
+ comment :<p> </p>`           `
 },
     'article-two': { 
     title: 'Article-Two |AMENA ARIF',
@@ -38,6 +38,7 @@ var articles={
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                 </p>
+    comment :<p> </p>`
             `
     },  
     'article-three': {
@@ -50,7 +51,7 @@ var articles={
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                 </p>
-            `
+     comment :<p> </p>`
     
     
     }
@@ -62,7 +63,7 @@ function CreateTemplate(data) {
     var date=data.date;
     var heading=data.heading;
     var content=data.content;
-   
+   var comment=data.comment;
     var htmlTemplate =`
     <html>
     <head>
@@ -91,7 +92,7 @@ function CreateTemplate(data) {
         <hr/>
         <br>
         <div>
-    <div class="footer">
+    <div class="comment">
                        
          <p>Post your comment below:</p>
                             <form method="post">
