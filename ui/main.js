@@ -1,3 +1,4 @@
+//counter
 var button = document.getElementById('counter');
 
 button.onclick = function() {
@@ -57,3 +58,33 @@ var name = nameInput.value;
     
    
 };
+//comments
+var post = document.getElementById('post_btn');
+post.onclick = function() {
+    //make a req to the server and send the names
+    //create  a req
+    var request = new XMLHttpRequest();
+    
+    //capture the res and store it in a variable;
+    request.onreadystatechange = function() {
+         if (request.readyState === XMLHttpRequest.DONE) {
+    //take some action
+        if(request.status === 200 ) {
+            // capture a list of names and render it as a list
+            var comment = request.responseText;
+            comments = JSON.parse(comments);    
+            var list ='';
+            for (var i=0; i<comments.length; i++) {
+                list += '<li>'+ comments[i] + '</li>';
+}
+        var ul = document.getElementById('commentlist');
+        ul.innerHTML = list;  
+        }     
+    }//not DONE yet
+};
+    var commentInput = document.getElementById('comment');
+var comment = commentInput.value;   
+    // make a request
+    request.open('GET','http://amenaarif1996.imad.hasura-app.io/post-comment?comment='+comment,true);
+    request.send(null);
+    
