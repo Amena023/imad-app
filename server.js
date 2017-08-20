@@ -92,7 +92,7 @@ function CreateTemplate(data) {
         <hr/>
         <br>
         <div>
-    <div class="comment">
+    <div class="footer">
                        
          <p>Post your comment below:</p>
                             <form method="post">
