@@ -91,9 +91,10 @@ function CreateTemplate(data) {
         <hr/>
         <br>
         <div>
+         
          <p>Post your comment below:</p>
                             <form method="post">
-                               <input type="text" name="comment" />
+                               <input type="text" id="comment" placeholder="comment" />
                                 <input type="submit" value="Post" id="post-btn"/>
                                <ul id="commentlist"></ul>
                             </form>
