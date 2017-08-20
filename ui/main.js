@@ -1,13 +1,25 @@
 var button = document.getElementById('counter');
-counter = 0;
+
 button.onclick = function() {
-    //make a req
+    //create  a req
+    var request = new XMLHTTPrequest();
     
     //capture the res and store it in a variable;
+    request.onreadystatechange = function() {
+         if (request.readystate === XMLHTTPrequest.DONE) {
+    //take some action
+        if(request.status === 200 ) {
+        var counter = request.responseText;
+        var span = document.getElementById('count');
+        span.innerHTML = counter.toString();     
+        }     
+    }//not DONE yet
+};
+       
+    // make a request
+    request.open('GET','http://amenaarif1996.imad.hasura-app.io/counter',true);
+    request.send(null);
     
-    // render the variable in the correct span
-    counter = counter + 1;
-    var span = document.getElementById('count');
-    span.innerHTML = counter.toString();
+   
     
-}
+};
