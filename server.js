@@ -92,9 +92,7 @@ function CreateTemplate(data) {
         <br>
         <div>
     <div class="footer">
-                   this button <button id="counter">Click me!!</button>has been clicked <span id="count">0</span> times
-                   <hr/>
-                   <br/>      
+                       
          <p>Post your comment below:</p>
                             <form method="post">
                                <input type="text" id="comment" placeholder="comment" />
