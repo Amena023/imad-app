@@ -126,7 +126,7 @@ app.get('/submit-name/:name', function() {
    names.push(name);
    //json :js obj notation 
    res.send(JSON.stringify(names));
-   res.send(names);
+   
 });
 
 app.get('/ui/style.css', function (req, res) {
