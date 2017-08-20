@@ -120,7 +120,14 @@ app.get('/:articleName', function (req,res){
     res.send(CreateTemplate(articles[articleName]));
 });
 
-
+var names = [];
+app.get('/submit-name/:name', function() {
+   var name = req.params.name;
+   names.push(name);
+   //json :js obj notation 
+   res.send(JSON.stringify(names));
+   res.send(names);
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
