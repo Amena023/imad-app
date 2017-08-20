@@ -38,7 +38,6 @@ var articles={
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                 </p>
-    `
             `
     },  
     'article-three': {
@@ -51,7 +50,7 @@ var articles={
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                     this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
                 </p>
-     `
+            `
     
     
     }
@@ -63,7 +62,7 @@ function CreateTemplate(data) {
     var date=data.date;
     var heading=data.heading;
     var content=data.content;
-   var comment=data.comment;
+   
     var htmlTemplate =`
     <html>
     <head>
@@ -98,8 +97,8 @@ function CreateTemplate(data) {
                             <form method="post">
                                <input type="text" id="comment" placeholder="comment" />
                                 <input type="submit" value="Post" id="post-btn"/>
-                            </form>    
-                           
+                               
+                            </form>
                     <ul id="commentlist"></ul>
      </div>   
         
