@@ -4,7 +4,7 @@ var path = require('path');
 var pool = new pool(config);
 var config = {
     user :'amenaarif1996'
-    database : 'amenaarif1996'
+    database : 'amenaarif1996';
     host : 'db.imad.hasura';
     port : '5432';
     password : process.env.DB_PASSWORD;
