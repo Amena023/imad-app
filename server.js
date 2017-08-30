@@ -1,7 +1,14 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-
+var pool = new pool(config);
+var config = {
+    user :'amenaarif1996';
+    database : 'amenaarif1996';
+    host : 'db.imad.hasura';
+    port : '5432';
+    password : process.env.DB_PASSWORD;
+};
 var app = express();
 app.use(morgan('combined'));
 
@@ -148,14 +155,34 @@ res.send(JSON.stringify(comments));
 });
 
 
-app.get('/:articleName', function (req,res){
+app.get('/articles/:articleName', function (req,res){
     //articleName==article-one
     //articles[articleName]=={} content object for article-one
-        var articleName=req.params.articleName;
-    res.send(CreateTemplate(articles[articleName]));
+        pool.query("select *from article where title="'" + req.params.articleName"'",function(err,result) {
+            if(err) {
+                res.status(500).send(err.toString());
+            } else { 
+                if(result.rows.length===0) {
+                    res.status(404).send('article not found!!');
+                } else {
+                    var articleData =result.rows;
+                }
+        }
+    res.send(CreateTemplate(articles[articleData]));
 });
 
 
+
+app.get('/test-db',function(req,res) {
+ pool.query('SELECT *from test',function(err,result) {
+   if(err) {
+       res.status(500).send(err.toStringify);
+       }
+       else {
+           res.send(JSON.stringify(result.rows));
+       }
+ });
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
