@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var pool = new pool(config);
 var config = {
-    user :'amenaarif1996';
+    user :'amenaarif1996'
     database : 'amenaarif1996';
     host : 'db.imad.hasura';
     port : '5432';
