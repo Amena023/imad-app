@@ -1,13 +1,13 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var pool = new pool(config);
+
 var config = {
-    user :'amenaarif1996'
-    database : 'amenaarif1996';
-    host : 'db.imad.hasura';
-    port : '5432';
-    password : process.env.DB_PASSWORD;
+    user :'amenaarif1996',
+    database : 'amenaarif1996',
+    host : 'db.imad.hasura',
+    port : '5432',
+    password : process.env.DB_PASSWORD
 };
 var app = express();
 app.use(morgan('combined'));
@@ -119,8 +119,17 @@ function CreateTemplate(data) {
 }
 
 
-
-
+var pool = new pool(config);
+app.get('/test-db',function(req,res) {
+ pool.query('SELECT *from test',function(err,result) {
+   if(err) {
+       res.status(500).send(err.toString());
+       }
+       else {
+           res.send(JSON.stringify(result.rows));
+       }
+ });
+});
 
 
 
@@ -173,16 +182,7 @@ app.get('/articles/:articleName', function (req,res){
 
 
 
-app.get('/test-db',function(req,res) {
- pool.query('SELECT *from test',function(err,result) {
-   if(err) {
-       res.status(500).send(err.toStringify);
-       }
-       else {
-           res.send(JSON.stringify(result.rows));
-       }
- });
-});
+
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
