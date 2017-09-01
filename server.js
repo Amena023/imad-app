@@ -119,14 +119,14 @@ function CreateTemplate(data) {
 }
 
 
-var pool = new pool(config);
+var pool = new Pool(config);
 app.get('/test-db',function(req,res) {
  pool.query('SELECT *from test',function(err,result) {
    if(err) {
        res.status(500).send(err.toString());
        }
        else {
-           res.send(JSON.stringify(result.rows));
+           res.send(JSON.stringify(result));
        }
  });
 });
