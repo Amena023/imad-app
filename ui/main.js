@@ -51,7 +51,7 @@ submit.onclick = function() {
     console.log(username);
     console.log(password);
     // make a request
-    request.open('POST','http://amenaarif1996.imad.hasura-app.io/submit-name?name='+name,true);
+    request.open('POST','http://amenaarif1996.imad.hasura-app.io/submit-name?name='+username,true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify({username: username, password: password}));
     
