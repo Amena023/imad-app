@@ -175,6 +175,10 @@ app.get('/check-login' , function (req, res) {
         res.send('u r not logged-in');
     }
 });
+app.get('/logout' , function (req, res) {
+    delete req.session.auth;
+    res.send('Logged out');
+});
 var counter = 0;
 app.get('/counter', function (req,res) {
      counter = counter + 1;
