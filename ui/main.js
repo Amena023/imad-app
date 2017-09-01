@@ -1,4 +1,4 @@
-//counter
+/*//counter
 var button = document.getElementById('counter');
 
 button.onclick = function() {
@@ -23,9 +23,9 @@ button.onclick = function() {
     
    
     
-};
+};*/
 //submit name
-
+//submit username nd password
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     //make a req to the server and send the names
@@ -37,23 +37,23 @@ submit.onclick = function() {
          if (request.readyState === XMLHttpRequest.DONE) {
     //take some action
         if(request.status === 200 ) {
-            // capture a list of names and render it as a list
-            var names = request.responseText;
-            names = JSON.parse(names);    
-            var list ='';
-            for (var i=0; i<names.length; i++) {
-                list += '<li>'+ names[i] + '</li>';
-}
-        var ul = document.getElementById('namelist');
-        ul.innerHTML = list;  
-        }     
+        alert('Logged in successfully');
+        }
+        else if (request.status === 403 ) {
+            alert('Username/password in correct');
+        } else if (request.status === 500 ) {
+            alert('Alas !! Somthings Fishy');
+        }
     }//not DONE yet
 };
-    var nameInput = document.getElementById('name');
-var name = nameInput.value;   
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    console.log(username);
+    console.log(password);
     // make a request
-    request.open('GET','http://amenaarif1996.imad.hasura-app.io/submit-name?name='+name,true);
-    request.send(null);
+    request.open('POST','http://amenaarif1996.imad.hasura-app.io/submit-name?name='+name,true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(JSON.stringify({username: username, password: password}));
     
     
    
@@ -85,7 +85,7 @@ post.onclick = function() {
     var commentInput = document.getElementById('comment');
 var comment = commentInput.value;   
     // make a request
-    request.open('GET','http://amenaarif1996.imad.hasura-app.io/post-comment?comment='+comment,true);
+    request.open('POST','http://amenaarif1996.imad.hasura-app.io/post-comment?comment='+comment,true);
     request.send(null);
     
 };
