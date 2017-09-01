@@ -129,15 +129,27 @@ app.post('/create-user' , function(req,res) {
 app.post('/login', function(req, res) {
      var username = req.body.username;
     var password = req.body.password;
-    pool.query('SELECT  FROM "user" username = (username VALUES ($1 , $2)', [username, dbString] , function(err,result) {
+    
+    pool.query('SELECT  *FROM "user" username =$1', [username] , function(err,result) {
          if(err) {
                 res.status(500).send(err.toString());
+       } else {
+           if (result.rows.length === 0) {
+                res.send('Username password incorrect !!');
+           } else {
+           //match the password    
+           
+           var dbString = result.rows[0].password;
+           var salt = dbString.spilt('$')[2];
+           var hashPassword = hash(password, salt);
+           if (hashedPassword === dbString ) {
+                res.send('Credentials correct');
+           } else {
+           res.send('Username password incorrect !!');
+           }
        }
-       else {
-           res.send('User Sucessfully created:' +username);
-       }
-        
-    });
+    }   
+        });
 });
 
 
