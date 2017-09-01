@@ -13,56 +13,7 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-var articles={
-    'article-one': {
-    title: 'Article-One |AMENA ARIF',
-    heading: 'Article-One',
-    date:'Aug 13 2017',
-    content:`<p>  FIRST Article 
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                </p>
-                
-                
-                
-                <p>
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...vthis is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                </p>
-                
-                
-                
-                <p>
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                </p>
-            `
-},
-    'article-two': { 
-    title: 'Article-Two |AMENA ARIF',
-    heading: 'Article-Two',
-    date:'Aug 13 2017',
-    content:`<p>   Second Article
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                </p>
-            `
-    },  
-    'article-three': {
-        
-    title: 'Article-Three |AMENA ARIF',
-    heading: 'Article-Three',
-    date:'Aug 13 2017',
-    content:`<p>   Third Article
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                    this is amna this is amna this is amna...this is amna this is amna this is amna...this is amna this is amna this is amna...
-                </p>
-            `
-    
-    
-    }
-    };
+
                 
 
 function CreateTemplate(data) {
