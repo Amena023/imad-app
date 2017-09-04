@@ -242,7 +242,7 @@ app.get('/post-comment/:comment', function (req,res) {
     var comment = req.params.name;
     comments.push(comment);
     comments.push(comments);
-    res.send(JSON.string(comments));
+    res.send(JSON.stringify(comments));
 })
 
 
