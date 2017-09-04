@@ -65,8 +65,8 @@ var submit = document.getElementById('submitc_btn');
 submit.onclick = function () {
     var comments = ['comment1','comment2','comment3'];
      var list = '';
-    for (var  i=0 ; i<comments.length ; i++) {
-        list += '<li>' + comments[i] + '</li>';
+    for (var  i=0 ; i< comments.length ; i++) {
+        list += '<li>' + comments[i] + '</li>'; 
     }
     var ul = document.getElementById('commentlist');
     ul.innerHTML = list ;
