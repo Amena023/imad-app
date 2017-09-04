@@ -233,8 +233,8 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 var comments = [];
-app.get('/post-comment/:comment', function(req,res) {
-    var comment = req.params.name;
+app.get('/submit-comment/:comment', function(req,res) {
+    var comment = req.params.comment;
     comments.push(comment);
 //JSON 
     res.send(JSON.stringify(comments));
