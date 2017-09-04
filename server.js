@@ -196,7 +196,13 @@ app.get('/submit-name', function(req,res) {
    
 });
 
-
+var comments = [];
+app.get('/submit-comment', function(req,res) {
+    var comment = req.query.comment;
+    comments.push(comment);
+//JSON 
+    res.send(JSON.stringify(comments));
+});
 
 
 app.get('/articles/:articleName', function (req,res){
@@ -232,13 +238,7 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-var comments = [];
-app.get('/submit-comment', function(req,res) {
-    var comment = req.query.comment;
-    comments.push(comment);
-//JSON 
-    res.send(JSON.stringify(comments));
-})
+
 
 
 // Do not change port, otherwise your app won't run on IMAD servers
