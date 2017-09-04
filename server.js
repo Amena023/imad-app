@@ -58,13 +58,13 @@ function CreateTemplate(data) {
         <div>
     <div class="footer">
                        
-         <p>Post your comment below:</p>
-                            <form method="post">
-                               <input type="text" id="comment" placeholder="comment" />
-                                <input type="submit" value="Post" id="post-btn"/>
+        // <p>Post your comment below:</p>
+          //                  <form method="post">
+            //                   <input type="text" id="comment" placeholder="comment" />
+              //                  <input type="submit" value="comment" id="post-btn"/>
                                
-                            </form>
-                    <ul id="commentlist"></ul>
+                //            </form>
+                  //  <ul id="commentlist"></ul>
      </div>   
         
         
