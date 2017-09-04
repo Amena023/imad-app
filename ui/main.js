@@ -63,11 +63,35 @@ var commentInput = document.getElementById('comment');
 var comment = commentInput.value;
 var submit = document.getElementById('submitc_btn');
 submit.onclick = function () {
-    var comments = ['comment1','comment2','comment3'];
-     var list = '';
-    for (var  i=0 ; i< comments.length ; i++) {
-        list += '<li>' + comments[i] + '</li>'; 
+    
+    var request = new XMLHttpRequest();
+    
+    //capture the res and store it in a variable;
+    request.onreadystatechange = function() {
+         if (request.readyState === XMLHttpRequest.DONE) {
+    //take some action
+        if(request.status === 200 ) {
+            
+                 var comments = request.responseText;
+                 comments = JSON.parse(comments);
+                 var list = '';
+                    for (var  i=0 ; i< comments.length ; i++) {
+                         list += '<li>' + comments[i] + '</li>';        
+                     }
+         var ul = document.getElementById('commentlist');
+            ul.innerHTML = list ;
+    }  //not DONE yet
+};
+       
+    // make a request
+    request.open('GET','http://amenaarif1996.imad.hasura-app.io/submit_comment?comment=' + comment ,true);
+    request.send(null);
+    
+    
+    
+    
+    
+   
     }
-    var ul = document.getElementById('commentlist');
-    ul.innerHTML = list ;
+   
 };
