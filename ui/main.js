@@ -60,7 +60,7 @@ submit.onclick = function() {
 };
 //post comment
 
-var submit = document.getElementById('submit_btn');
+var submit = document.getElementById('submitc_btn');
 submit.onclick = function () {
     
     var request = new XMLHttpRequest();
@@ -85,6 +85,6 @@ submit.onclick = function () {
     // make a request
     var commentInput = document.getElementById('comment');
     var comment = commentInput.value;
-    request.open('GET','http://amenaarif1996.imad.hasura-app.io/submit-comment?comment=' + comment ,true);
+    request.open('GET','http://amenaarif1996.imad.hasura-app.io/submit-comment?comment=' +comment ,true);
     request.send(null);
 };
