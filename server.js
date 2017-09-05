@@ -197,7 +197,7 @@ app.get('/articles/:articleName', function (req,res){
 app.get('/login',function(req,res) {
      var username = req.body.username;
     var password = req.body.password;
-    function LoginTemplate() {
+    function LoginTemplate(data) {
         var loginhtml = `
         <html>
         <head>
