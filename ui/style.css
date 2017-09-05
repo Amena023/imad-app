@@ -28,3 +28,8 @@ body {
                padding-left: 60px;
                padding-right: 60px;
            }
+
+    .topnav {
+    background-color: #333;
+    overflow: hidden;
+}
