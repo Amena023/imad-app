@@ -70,6 +70,17 @@ function CreateTemplate(data) {
         
             
     </div>
+    <div class="right">
+     <h3>LOGIN</h3>
+                   <div>
+                       <input type="text" id="username" placeholder="username"/>
+                       <br>
+                       <br>
+                       <input type="password" id="password" placeholder="password" />
+                       <input type="submit" id="submit_btn" />
+                       <br>
+                    </div>
+        </div>
     </body>
 </html>
 `;
