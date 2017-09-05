@@ -20,8 +20,24 @@ app.use(session({
     secret : 'someRandomSecretValue',
     cookie : { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
-
-
+function LoginTemplate(data) {
+    var loginhtml =`
+    <html>
+    <head>
+    <h3>Login</h3>
+    </head>
+     <div>
+                       <input type="text" id="username" placeholder="username"/>
+                       
+                       <br>
+                       <input type="password" id="password" placeholder="password" />
+                       <input type="submit" id="submit_btn" />
+                       <br>
+    </div>
+</html>
+`;
+    return LoginTemplate;
+}
         
     
 function CreateTemplate(data) {
@@ -55,6 +71,7 @@ function CreateTemplate(data) {
         <div>
             ${content}
         </div>
+    </body>
         <hr/>
         <br>
         <div>
@@ -68,16 +85,17 @@ function CreateTemplate(data) {
                             </form>
                     <ul id="commentlist"></ul>
      </div>   
-        
+      
         
             
     </div>
-
-    </body>
-</html>
+     
 `;
+ 
     return htmlTemplate;
 }
+
+
 
 
 
@@ -202,6 +220,7 @@ app.get('/login',function(req,res) {
            res.send(JSON.stringify(result.rows));
            
        }
+       res.send(LoginTemplate(data));
  });
 });
 
