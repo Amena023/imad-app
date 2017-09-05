@@ -205,7 +205,7 @@ app.get('/submit-comment', function(req,res) {
 });
 
 //comment db
-app.get('/comments', function (req,res){
+app.get('/articles/comments', function (req,res){
     //articleName==article-one
     //articles[articleName]=={} content object for article-one
         pool.query("SELECT *FROM comments ",function(err,result) {
