@@ -35,7 +35,7 @@ function CreateTemplate(data) {
         ${title}
         </title>
         <meta name="viewport" content="width=width-device,initial-scale=1"/>
-     // <link href="/ui/style.css" rel="stylesheet" />
+      <link href="/ui/style.css" rel="stylesheet" />
     </head>
     
     <body>
@@ -204,28 +204,6 @@ app.get('/submit-comment', function(req,res) {
     res.send(JSON.stringify(comments));
 });
 
-//comment db
-app.get('/articles/comments', function (req,res){
-    //articleName==article-one
-    //articles[articleName]=={} content object for article-one
-        pool.query("SELECT *FROM comments ",function(err,result) {
-            if(err) {
-                res.status(500).send(err.toString());
-            } else { 
-                if(result.rows.length===0) {
-                    res.status(404).send(' not found!!');
-                } else {
-                    var commentData =result.rows[0];
-                     res.send(CreateTemplate(commentData));
-                }
-        }
-   
-});
-
-});
-
-
-
 
 app.get('/articles/:articleName', function (req,res){
     //articleName==article-one
@@ -246,6 +224,25 @@ app.get('/articles/:articleName', function (req,res){
 
 });
 
+
+app.get('/articles/:articleName/comments', function (req,res){
+    //articleName==article-one
+    //articles[articleName]=={} content object for article-one
+        pool.query("SELECT *FROM article WHERE title= $1", [req.params.articleName],function(err,result) {
+            if(err) {
+                res.status(500).send(err.toString());
+            } else { 
+                if(result.rows.length===0) {
+                    res.status(404).send('article not found!!');
+                } else {
+                    var articleData =result.rows[0];
+                     res.send(CreateTemplate(articleData));
+                }
+        }
+   
+});
+
+});
 
 
 app.get('/ui/style.css', function (req, res) {
