@@ -213,40 +213,18 @@ app.get('/articles/:articleName', function (req,res){
 
 });
 
-app.post('/users/login', function(req, res) {
-     var username = req.body.username;
-    var password = req.body.password;
-    
-  pool.query('SELECT  * FROM users ', function (err,result) {
-        var userData =result.rows[0];
-                     res.send(CreateTemplate2(userData));
-         if(err) {
-                res.status(500).send(err.toString());
-       } else {
-           if (result.rows.length === 0) {
-                res.send('Username password incorrect !!');
-           } else {
-           //match the password    
-           
-           var dbString = result.rows[0].password;
-           var salt = dbString.spilt('$')[2];
-           var hashPassword = hash(password, salt);
-           if (hashedPassword === dbString ) {
-               
-               //set session
-               req.session.auth = {userid: result.rows[0].id};
-               //set cookie with a session id
-               //inrnally on server side it maps the session id to an object
-               // {auth :{userid}};
-                    res.send('Credentials correct');
-           } else {
-           res.send('Username password incorrect !!');
-           }
+app.get('/login',function(req,res) {
+    pool.query('SELECT *from users',function(err,result) {
+   if(err) {
+       res.status(500).send(err.toString());
        }
-    }   
-        });
+       else {
+           res.send(JSON.stringify(result.rows));
+           var articleData =result.rows[0];
+                     res.send(CreateTemplate(articleData));
+       }
+ });
 });
-
 
 
 app.get('/articles/:articleName/comments', function (req,res){
