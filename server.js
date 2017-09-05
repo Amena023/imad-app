@@ -27,6 +27,7 @@ function CreateTemplate2(data2) {
     <head>
     <div>
     <h3>LOGIN</h3>
+    <hr>
     </head>
                    <div>
                        <input type="text" id="username" placeholder="username"/>
@@ -217,6 +218,8 @@ app.post('/user/:username', function(req, res) {
     var password = req.body.password;
     
     pool.query('SELECT  * FROM "users" WHERE  username =$1', [username], function (err,result) {
+        var userData =result.rows[0];
+                     res.send(CreateTemplate2(userData));
          if(err) {
                 res.status(500).send(err.toString());
        } else {
