@@ -213,7 +213,7 @@ app.get('/articles/:articleName', function (req,res){
 
 });
 
-app.post('/user/:username', function(req, res) {
+app.post('/login', function(req, res) {
      var username = req.body.username;
     var password = req.body.password;
     
@@ -236,7 +236,7 @@ app.post('/user/:username', function(req, res) {
                //set session
                req.session.auth = {userid: result.rows[0].id};
                //set cookie with a session id
-               //internally on server side it maps the session id to an object
+               //inrnally on server side it maps the session id to an object
                // {auth :{userid}};
                     res.send('Credentials correct');
            } else {
