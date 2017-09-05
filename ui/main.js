@@ -59,7 +59,7 @@ submit.onclick = function() {
    
 };
 //post comment
-
+/*
 var submit = document.getElementById('submitc_btn');
 submit.onclick = function () {
     
@@ -87,4 +87,4 @@ submit.onclick = function () {
     var comment = commentInput.value;
     request.open('GET','http://amenaarif1996.imad.hasura-app.io/submit-comment?comment=' +comment ,true);
     request.send(null);
-};
+};*/
