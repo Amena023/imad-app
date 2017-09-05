@@ -20,7 +20,29 @@ app.use(session({
     secret : 'someRandomSecretValue',
     cookie : { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
-                
+
+function CreateTemplate2(data2) {
+    var htmllogin =`
+    <html>
+    <head>
+    <div>
+    <h3>LOGIN</h3>
+    </head>
+                   <div>
+                       <input type="text" id="username" placeholder="username"/>
+                       <br>
+                       <br>
+                       <input type="password" id="password" placeholder="password" />
+                       <input type="submit" id="submit_btn" />
+                       <br>
+                    </div>
+        </div> 
+        </html>
+        `;
+        return htmllogin;
+}
+        
+    
 function CreateTemplate(data) {
     var title=data.title;
     var date=data.date;
@@ -114,7 +136,7 @@ app.get('/hash/:input',function (req , res) {
     
 });
 
-app.post('/create-user' , function(req,res) {
+app.post('/register/create-user' , function(req,res) {
     
     var username = req.body.username;
     var password = req.body.password;
@@ -131,41 +153,6 @@ app.post('/create-user' , function(req,res) {
     });
 });
 
-app.post('/user/login', function(req, res) {
-     var username = req.body.username;
-    var password = req.body.password;
-    
-    pool.query('SELECT  * FROM "user" WHERE  username =$1', [username], function (err,result) {
-         if(err) {
-                res.status(500).send(err.toString());
-       } else {
-           if (result.rows.length === 0) {
-                res.send('Username password incorrect !!');
-           } else {
-           //match the password    
-           
-           var dbString = result.rows[0].password;
-           var salt = dbString.spilt('$')[2];
-           var hashPassword = hash(password, salt);
-           if (hashedPassword === dbString ) {
-               
-               //set session
-               req.session.auth = {userid: result.rows[0].id};
-               //set cookie with a session id
-               //internally on server side it maps the session id to an object
-               // {auth :{userid}};
-               
-               
-               
-               
-                res.send('Credentials correct');
-           } else {
-           res.send('Username password incorrect !!');
-           }
-       }
-    }   
-        });
-});
 
 
 
@@ -224,6 +211,39 @@ app.get('/articles/:articleName', function (req,res){
 });
 
 });
+
+app.post('/user/:username', function(req, res) {
+     var username = req.body.username;
+    var password = req.body.password;
+    
+    pool.query('SELECT  * FROM "users" WHERE  username =$1', [username], function (err,result) {
+         if(err) {
+                res.status(500).send(err.toString());
+       } else {
+           if (result.rows.length === 0) {
+                res.send('Username password incorrect !!');
+           } else {
+           //match the password    
+           
+           var dbString = result.rows[0].password;
+           var salt = dbString.spilt('$')[2];
+           var hashPassword = hash(password, salt);
+           if (hashedPassword === dbString ) {
+               
+               //set session
+               req.session.auth = {userid: result.rows[0].id};
+               //set cookie with a session id
+               //internally on server side it maps the session id to an object
+               // {auth :{userid}};
+                    res.send('Credentials correct');
+           } else {
+           res.send('Username password incorrect !!');
+           }
+       }
+    }   
+        });
+});
+
 
 
 app.get('/articles/:articleName/comments', function (req,res){
