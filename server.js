@@ -220,7 +220,8 @@ app.get('/login',function(req,res) {
            res.send(JSON.stringify(result.rows));
            
        }
-       res.send(LoginTemplate(data));
+       var userData =result.rows[0];
+       res.send(LoginTemplate(userData));
  });
 });
 app.post('/login', function(req, res) {
