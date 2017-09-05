@@ -20,24 +20,7 @@ app.use(session({
     secret : 'someRandomSecretValue',
     cookie : { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
-function LoginTemplate(data) {
-    var loginhtml =`
-    <html>
-    <head>
-    <h3>Login</h3>
-    </head>
-     <div>
-                       <input type="text" id="username" placeholder="username"/>
-                       
-                       <br>
-                       <input type="password" id="password" placeholder="password" />
-                       <input type="submit" id="submit_btn" />
-                       <br>
-    </div>
-</html>
-`;
-    return LoginTemplate;
-}
+
         
     
 function CreateTemplate(data) {
@@ -220,7 +203,7 @@ app.get('/login',function(req,res) {
            res.send(JSON.stringify(result.rows));
            
        }
-       var userData =result.rows[0];
+       //var userData =result.rows[0];
        res.send(LoginTemplate(userData));
  });
 });
