@@ -21,7 +21,10 @@ app.use(session({
     cookie : { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
 
-function CreateTemplate2(data2) {
+function CreateTemplateLogin(data2) {
+    var username=data2.username;
+    var password=data2.password;
+    var id=data2.id;
     var htmllogin =`
     <html>
     <head>
@@ -220,8 +223,8 @@ app.get('/login',function(req,res) {
        }
        else {
            res.send(JSON.stringify(result.rows));
-           var articleData =result.rows[0];
-                     res.send(CreateTemplate(articleData));
+           var userData =result.rows[0];
+                     res.send(CreateTemplateLogin(userData));
        }
  });
 });
