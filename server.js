@@ -194,18 +194,9 @@ app.get('/articles/:articleName', function (req,res){
 
 });
 
-app.get('/login',function(req,res) {
-    pool.query('SELECT *from users',function(err,result) {
-   if(err) {
-       res.status(500).send(err.toString());
-       }
-       else {
-           res.send(JSON.stringify(result.rows));
-           
-       }
-       //var userData =result.rows[0];
-       res.send(LoginTemplate(userData));
- });
+app.get('/register',function(req,res) {
+    
+ 
 });
 app.post('/login', function(req, res) {
      var username = req.body.username;
@@ -213,7 +204,7 @@ app.post('/login', function(req, res) {
     
   pool.query('SELECT  * FROM users WHERE id=$1',[id], function (err,result) {
         var userData =result.rows[0];
-                     res.send(CreateTemplate2(userData));
+                     res.send(CreateTemplate(articleData));
          if(err) {
                 res.status(500).send(err.toString());
        } else {
