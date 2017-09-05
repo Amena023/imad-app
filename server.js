@@ -21,7 +21,60 @@ app.use(session({
     cookie : { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
                 
+function CreateTemplate(data) {
+    var title=data.title;
+    var date=data.date;
+    var heading=data.heading;
+    var content=data.content;
+   
+    var htmlTemplate =`
+    <html>
+    <head>
+        <title>
+        ${title}
+        </title>
+        <meta name="viewport" content="width=width-device,initial-scale=1"/>
+      <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    
+    <body>
+    
+    <div class="container">
+            <div>
+                <a href="/">Home</a>
+            </div>
+        <hr/>
+            <h3>${heading}</h3>
+            <div>
+                ${date.toDateString()}
+            </div>
+       
+        <div>
+            ${content}
+        </div>
+        <hr/>
+        <br>
+        <div>
+    <div class="footer">
+                       
+        <p>Post your comment below:</p>
+                            <form method="post">
+                              <input type="text" id="comment" placeholder="comment" />
+                               <input type="submit" value="comment" id="post-btn"/>
+                               
+                            </form>
+                    <ul id="commentlist"></ul>
+     </div>   
+        
+        
+            
+    </div>
 
+    </body>
+</html>
+`;
+    return htmlTemplate;
+}
 
 
 
