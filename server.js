@@ -205,10 +205,10 @@ app.get('/submit-comment', function(req,res) {
 });
 
 //comment db
-app.get('/comments/:articleName', function (req,res){
+app.get('/comments', function (req,res){
     //articleName==article-one
     //articles[articleName]=={} content object for article-one
-        pool.query("SELECT *FROM comments WHERE comment_id= $1", [req.params.articleName],function(err,result) {
+        pool.query("SELECT *FROM comments ",function(err,result) {
             if(err) {
                 res.status(500).send(err.toString());
             } else { 
