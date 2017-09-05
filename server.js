@@ -204,6 +204,28 @@ app.get('/submit-comment', function(req,res) {
     res.send(JSON.stringify(comments));
 });
 
+//comment db
+app.get('/comments/:articleName', function (req,res){
+    //articleName==article-one
+    //articles[articleName]=={} content object for article-one
+        pool.query("SELECT *FROM comments WHERE comment_id= $1", [req.params.articleName],function(err,result) {
+            if(err) {
+                res.status(500).send(err.toString());
+            } else { 
+                if(result.rows.length===0) {
+                    res.status(404).send(' not found!!');
+                } else {
+                    var commentData =result.rows[0];
+                     res.send(CreateTemplate(commentData));
+                }
+        }
+   
+});
+
+});
+
+
+
 
 app.get('/articles/:articleName', function (req,res){
     //articleName==article-one
