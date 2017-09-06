@@ -21,16 +21,7 @@ app.use(session({
     cookie : { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
 
-        function loadCommentForm () {
-    var commentFormHtml = `
-        <h5>Submit a comment</h5>
-        <textarea id="comment_text" rows="5" cols="100" placeholder="Enter your comment here..."></textarea>
-        <br/>
-        <input type="submit" id="submit" value="Submit" />
-        <br/>
-        `;
-    document.getElementById('comment_form').innerHTML = commentFormHtml;
-}
+      
     
 function CreateTemplate(data) {
     var title=data.title;
@@ -272,7 +263,7 @@ app.get('/articles/:articleName/comments', function (req,res){
 
 });
 
-
+  
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
