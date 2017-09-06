@@ -140,6 +140,26 @@ app.get('/', function (req, res) {
 
 });
 
+app.post('/create-user' , function(req,res) {
+    
+    var username = req.body.username;
+    var password = req.body.password;
+    var salt = crypto.randomBytes(128).toString('hex');
+    var dbString = hash(password,salt);
+    pool.query('INSERT INTO "user" (username, password) VALUES ($1 , $2)', [username, dbString] , function(err,result) {
+         if(err) {
+                res.status(500).send(err.toString());
+       }
+       else {
+           res.send('User Sucessfully created:' +username);
+       }
+        
+    });
+});
+
+
+
+
 app.post('/login', function(req, res) {
      var username = req.body.username;
     var password = req.body.password;
@@ -149,18 +169,59 @@ app.post('/login', function(req, res) {
       
            if(err) {
                 res.status(500).send(err.toString());
-            } else { 
-                if(result.rows.length===0) {
-                    res.status(404).send('article not found!!');
-                } else {
-                   
-                     res.send(loadloginForm());
-                }
-        }
-   
-   
+       } else {
+           if (result.rows.length === 0) {
+                res.send('Username password incorrect !!');
+           } else {
+           //match the password    
+           
+           var dbString = result.rows[0].password;
+           var salt = dbString.spilt('$')[2];
+           var hashPassword = hash(password, salt);
+           if (hashedPassword === dbString ) {
+               
+               //set session
+               req.session.auth = {userid: result.rows[0].id};
+               //set cookie with a session id
+               //inrnally on server side it maps the session id to an object
+               // {auth :{userid}};
+                    res.send('Credentials correct');
+           } else {
+           res.status(403).send('Username password incorrect !!');
+           }
+       }
+    }    
         });
 });
+
+app.get('/logout' , function (req, res) {
+    delete req.session.auth;
+    res.send('<html><body>Logged out!!<br/><br/><a href="/">Back to home</a></body></html>');
+});
+
+app.get('/check-login' , function (req, res) {
+    if (req.session && req.session.auth && req.session.auth.userId) {
+        //load the user object
+        pool.query('SELECT *FROM "user WHERE id=$1',[req.session.auth.userid], function(err,res) {
+            if(err) {
+                res.status(500).send(err.toString());
+            } else {
+                res.send(result.rows[0].username);     
+            }
+        });
+      //  res.send('u r logged in ' + req.session.auth.userId.toString());
+    } else {
+        res.send(400).send('You r not logged-in');
+    }
+});
+
+
+
+
+   
+   
+    
+
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
