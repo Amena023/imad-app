@@ -54,7 +54,7 @@ function CreateTemplate(data) {
         <div>
             ${content}
         </div>
-    </body>
+    
         <hr/>
         <br>
         <div>
@@ -71,7 +71,7 @@ function CreateTemplate(data) {
                     <ul id="commentlist"></ul>
      </div>   
       
-        
+    </body>    
             
     </div>
      
