@@ -61,7 +61,7 @@ function CreateTemplate(data) {
                        
       <h4>Comments</h4>
               <div id="comment_form">
-               User Name: <input type="text" name="usrname">
+               User Name: <input type="text" name="username" placeholder="username">
                <br>
                <hr/>
                           <br>
