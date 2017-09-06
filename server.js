@@ -146,32 +146,19 @@ app.post('/login', function(req, res) {
     
     
   pool.query('SELECT  * FROM "user" WHERE username=$1',[username], function (err,result) {
-      res.send(loadloginForm()) ;  
-                    
-         if(err) {
+      
+           if(err) {
                 res.status(500).send(err.toString());
-       } else {
-           if (result.rows.length === 0) {
-                res.send('Username password incorrect !!');
-           } else {
-           //match the password    
-           
-           var dbString = result.rows[0].password;
-           var salt = dbString.spilt('$')[2];
-           var hashPassword = hash(password, salt);
-           if (hashedPassword === dbString ) {
-               
-               //set session
-               req.session.auth = {userid: result.rows[0].id};
-               //set cookie with a session id
-               //inrnally on server side it maps the session id to an object
-               // {auth :{userid}};
-                    res.send('Credentials correct');
-           } else {
-           res.status(403).send('Username password incorrect !!');
-           }
-       }
-    }    
+            } else { 
+                if(result.rows.length===0) {
+                    res.status(404).send('article not found!!');
+                } else {
+                    var articleData =result.rows[0];
+                     res.send(loadloginForm());
+                }
+        }
+   
+   
         });
 });
 
