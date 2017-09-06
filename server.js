@@ -4,7 +4,7 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
-var session = require('express-session');
+//var session = require('express-session');
 
 var config = {
     user :'amenaarif1996',
@@ -17,11 +17,11 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(session({
+/*app.use(session({
     secret : 'someRandomSecretValue',
     cookie : { maxAge: 1000 * 60 * 60 * 24 * 30 }
 }));
-
+*/
 function CreateTemplate(data) {
     var title=data.title;
     var date=data.date;
@@ -117,6 +117,39 @@ app.post('/create-user' , function(req,res) {
     });
 });
 
+app.post('/login', function(req, res) {
+     var username = req.body.username;
+    var password = req.body.password;
+   
+    
+  pool.query('SELECT  * FROM "user" WHERE username=$1',[username], function (err,result) {
+      
+           if(err) {
+                res.status(500).send(err.toString());
+       } else {
+           if (result.rows.length === 0) {
+                res.send('Username password incorrect !!');
+           } else {
+           //match the password    
+           
+           var dbString = result.rows[0].password;
+           var salt = dbString.spilt('$')[2];
+           var hashPassword = hash(password, salt);
+           if (hashedPassword === dbString ) {
+               
+               //set session
+              // req.session.auth = {userid: result.rows[0].id};
+               //set cookie with a session id
+               //inrnally on server side it maps the session id to an object
+               // {auth :{userid}};
+                    res.send('Credentials correct');
+           } else {
+           res.status(403).send('Username password incorrect !!');
+           }
+       }
+    }    
+        });
+});
 
 
 
