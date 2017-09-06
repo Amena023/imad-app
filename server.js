@@ -245,10 +245,10 @@ app.post('/login', function(req, res) {
                // {auth :{userid}};
                     res.send('Credentials correct');
            } else {
-           res.send('Username password incorrect !!');
+           res.status(403).send('Username password incorrect !!');
            }
        }
-    }   
+    }    
         });
 });
 
