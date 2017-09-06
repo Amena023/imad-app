@@ -61,16 +61,15 @@ function CreateTemplate(data) {
                        
       <h4>Comments</h4>
               <div id="comment_form">
-              </div>
-              <div id="postcomment">
-              <form action="/action_page.php" id="usrform">
-                          User Name: <input type="text" name="usrname">
+               User Name: <input type="text" name="usrname">
                           <br>
                             <textarea rows="4" cols="50" name="comment" form="usrform">
                              Enter text here...</textarea>
                           <input type="submit">
-                </form>
-                </div>
+              </div>
+             
+                         
+              
               <div id="comments">
               
                 <center>Loading comments...</center>
