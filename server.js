@@ -194,32 +194,13 @@ app.get('/articles/:articleName', function (req,res){
 
 });
 
-app.get('/login',function(req,res) {
-     var username = req.body.username;
-    var password = req.body.password;
-    function LoginTemplate(data) {
-        var loginhtml = `
-        <html>
-        <head>
-        <h3>Login</h3> </head>
-         <div>
-                       <input type="text" id="username" placeholder="username"/>
-                       <br>
-                       <br>
-                       <input type="password" id="password" placeholder="password" />
-                       <input type="submit" id="submit_btn" />
-                       <br>
-                    </div>
-         `;           
-    }
- 
-});
-/*app.post('/login', function(req, res) {
+
+app.post('/login', function(req, res) {
      var username = req.body.username;
     var password = req.body.password;
     
     
-  pool.query('SELECT  * FROM users WHERE username=$1',[username], function (err,result) {
+  pool.query('SELECT  * FROM "user" WHERE username=$1',[username], function (err,result) {
         
                     
          if(err) {
@@ -248,7 +229,7 @@ app.get('/login',function(req,res) {
     }   
         });
 });
-*/
+
 
 
 
