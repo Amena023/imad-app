@@ -163,18 +163,7 @@ app.post('/create-user' , function(req,res) {
 app.post('/login', function(req, res) {
      var username = req.body.username;
     var password = req.body.password;
-    <html>
-<p> Enter Username and Password </p>
-<FORM action="file:///android_asset/www/Browse.html" method="post">
-    <P>
-    <LABEL for="firstname">Username </LABEL>
-              <INPUT type="text" id="Username"><BR>
-    <LABEL for="lastname">Password </LABEL>
-              <INPUT type="text" id="Password"><BR>
-        <INPUT type="submit" value="Send"> <INPUT type="reset">
-    </P>
- </FORM>
-</html>
+   
     
   pool.query('SELECT  * FROM "user" WHERE username=$1',[username], function (err,result) {
       
