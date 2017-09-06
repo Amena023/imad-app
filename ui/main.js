@@ -135,7 +135,11 @@ function loadComments () {
                 comments.innerHTML('Oops! Could not load comments!');
             }
         }
+        
     };
+     request.open('GET', '/get-comments/' + currentArticleTitle, true);
+    request.send(null);
+}
 //post comment
 /*
 var submit = document.getElementById('submitc_btn');
