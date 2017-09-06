@@ -88,6 +88,20 @@ function CreateTemplate(data) {
  
     return htmlTemplate;
 }
+function loadloginForm () {
+    var loginFormHtml = `
+        <h3>LOGIN</h3>
+    
+                       <div>
+                       <input type="text" id="username" placeholder="username"/>
+                       <br>
+                       <br>
+                       <input type="password" id="password" placeholder="password" />
+                       <input type="submit" id="submit_btn" />
+                       <br>
+                    </div>
+        `;
+}
 
 var pool = new Pool(config);
 app.get('/test-db',function(req,res) {
@@ -130,7 +144,7 @@ app.post('/login', function(req, res) {
     
     
   pool.query('SELECT  * FROM "user" WHERE username=$1',[username], function (err,result) {
-        
+      res.send(loadloginForm()) ;  
                     
          if(err) {
                 res.status(500).send(err.toString());
