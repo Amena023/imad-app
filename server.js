@@ -65,8 +65,7 @@ function CreateTemplate(data) {
                <br>
                
                           <br>
-                            <textarea rows="4" cols="50" name="comment" form="usrform">
-                             placeholder="Enter text here..."</textarea>
+                            <textarea rows="4" cols="50" name="comment" form="usrform">Enter text here...</textarea>
                           <input type="submit">
               </div>
              
