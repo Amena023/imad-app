@@ -88,7 +88,7 @@ function CreateTemplate(data) {
  
     return htmlTemplate;
 }
-function loadloginForm () {
+function loadloginForm() {
     var loginFormHtml = `
         <h3>LOGIN</h3>
     
