@@ -24,9 +24,19 @@ button.onclick = function() {
    
     
 };*/
+function loadCommentForm () {
+    var commentFormHtml = `
+        <h5>Submit a comment</h5>
+        <textarea id="comment_text" rows="5" cols="100" placeholder="Enter your comment here..."></textarea>
+        <br/>
+        <input type="submit" id="submit" value="Submit" />
+        <br/>
+        `;
+    document.getElementById('comment_form').innerHTML = commentFormHtml;
+}
 //submit name
 //submit username nd password
-var submit = document.getElementById('submit_btn');
+var submit = document.getElementById('submit');
 submit.onclick = function() {
     //make a req to the server and send the names
     //create  a req
