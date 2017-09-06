@@ -59,21 +59,21 @@ function CreateTemplate(data) {
         <div>
     <div class="footer">
                        
-      <h4>Comments</h4>
+      <h3>Post commets</h3>
               <div id="comment_form">
                User Name: <input type="text" name="username" placeholder="username">
                <br>
-               <hr/>
+               
                           <br>
                             <textarea rows="4" cols="50" name="comment" form="usrform">
-                             Enter text here...</textarea>
+                             placeholder="Enter text here..."</textarea>
                           <input type="submit">
               </div>
              
                          
-              
+      <h4>Comments</h4>        
               <div id="comments">
-              
+              <br/>
                 <center>Loading comments...</center>
               </div>
           </div>
