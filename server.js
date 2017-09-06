@@ -62,6 +62,8 @@ function CreateTemplate(data) {
       <h4>Comments</h4>
               <div id="comment_form">
                User Name: <input type="text" name="usrname">
+               <br>
+               <hr/>
                           <br>
                             <textarea rows="4" cols="50" name="comment" form="usrform">
                              Enter text here...</textarea>
