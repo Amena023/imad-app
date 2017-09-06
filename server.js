@@ -60,12 +60,14 @@ function CreateTemplate(data) {
         <div>
     <div class="footer">
                        
-        <p>Post your comment below:</p>
-                            <form method="post">
-                              <input type="text" id="comment" placeholder="comment" />
-                               <input type="submit" value="comment" id="post-btn"/>
-                               
-                            </form>
+      <h4>Comments</h4>
+              <div id="comment_form">
+              </div>
+              <div id="comments">
+                <center>Loading comments...</center>
+              </div>
+          </div>
+          <script type="text/javascript" src="/ui/article.js"></script>
                     <ul id="commentlist"></ul>
      </div>   
       
