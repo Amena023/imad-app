@@ -101,6 +101,7 @@ function loadloginForm () {
                        <br>
                     </div>
         `;
+        return loginFormHtml;
 }
 
 var pool = new Pool(config);
