@@ -93,6 +93,17 @@ function CreateTemplate(data) {
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+var pool = new Pool(config);
+app.get('/test-db',function(req,res) {
+ pool.query('SELECT *from test',function(err,result) {
+   if(err) {
+       res.status(500).send(err.toString());
+       }
+       else {
+           res.send(JSON.stringify(result.rows));
+       }
+ });
+});	
 
 function hash (input, salt) {
     //how do we create a hash
@@ -159,17 +170,6 @@ app.post('/login', function(req, res) {
         });
 });
 
-var pool = new Pool(config);
-app.get('/test-db',function(req,res) {
- pool.query('SELECT *from test',function(err,result) {
-   if(err) {
-       res.status(500).send(err.toString());
-       }
-       else {
-           res.send(JSON.stringify(result.rows));
-       }
- });
-});	
 
 
 app.get('/logout' , function (req, res) {
