@@ -66,7 +66,7 @@ function loadCommentForm () {
 }
 //submit name
 //submit username nd password
-var submit = document.getElementById('submit');
+var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
     //make a req to the server and send the names
     //create  a req
@@ -98,6 +98,20 @@ submit.onclick = function() {
     
    
 };
+function loadLogin () {
+    // Check if the user is already logged in
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+                loadCommentForm(this.responseText);
+            }
+        }
+    };
+    
+    request.open('GET', '/check-login', true);
+    request.send(null);
+}
 //post comment
 /*
 var submit = document.getElementById('submitc_btn');
